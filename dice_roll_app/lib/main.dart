@@ -28,6 +28,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String rolled = "no";
+  void roll() {
+    setState(() {
+      if (rolled == "yes") {
+        rolled = "no";
+      } else {
+        rolled = "yes";
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +56,17 @@ class _HomePageState extends State<HomePage> {
           children: [
             const Text(
               "Hi",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+
+            ElevatedButton(onPressed: roll, child: Text("Roll")),
+
+            Text(
+              rolled,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
