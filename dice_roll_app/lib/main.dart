@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,11 +33,9 @@ class _HomePageState extends State<HomePage> {
   String rolled = "no";
   void roll() {
     setState(() {
-      if (rolled == "yes") {
-        rolled = "no";
-      } else {
-        rolled = "yes";
-      }
+      var intValue = Random().nextInt(7); // Value is >= 0 and < 10.
+
+      rolled = "$intValue";
     });
   }
 
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              "Hi",
+              "You Got:",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            ElevatedButton(onPressed: roll, child: Text("Roll")),
+            const SizedBox(width: 10, height: 20),
 
             Text(
               rolled,
@@ -73,6 +73,10 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
               ),
             ),
+
+            const SizedBox(width: 10, height: 20),
+
+            ElevatedButton(onPressed: roll, child: Text("Roll")),
           ],
         ),
       ),
